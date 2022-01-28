@@ -42,7 +42,6 @@ def start(message):
 def stop(message):
     if tele_insta_bot:
         tele_insta_bot.stop_parser()
-    else:
         bot.send_message(message.chat.id, 'Stopped.')
 
 
