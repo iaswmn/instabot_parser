@@ -1,4 +1,5 @@
 import telebot
+import time
 from insta_parser import InstaParser
 from config import BotSettings, BotReplyText
 
@@ -23,11 +24,19 @@ class TeleInstaBot:
         except KeyboardInterrupt:
             print("\nStopping...")
         except Exception as err:
-            self.log('Try again... Error: ' + str(err))
+            self.log('Error: ' + str(err))
             print(err)
+            self.restart()
 
     def stop_parser(self):
         self.insta_parser.stop_parser()
+
+    def restart(self):
+        self.log('Try to restart...')
+        self.stop_parser()
+        sleep(300)
+        self.log('Timeout 5 min for re-login...')
+        main()
 
 
 tele_insta_bot = None
